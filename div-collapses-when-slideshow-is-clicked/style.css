@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box
+}
+
+.mySlides1,
+.mySlides2,
+.mySlides3,
+.mySlides4,
+.mySlides5,
+.mySlides6,
+.mySlides7,
+.mySlides8,
+.mySlides9,
+.mySlides10,
+img {
+    vertical-align: middle;
+}
+
+@font-face {
+    font-family: 'lirmaregular';
+    src: url('lirma-webfont.woff2') format('woff2'), url('lirma-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Information line in the top */
+
+.Headline {
+    display: flex;
+    flex-direction: row;
+    flex-direction: wrap;
+    font-family: 'Helvetica Neue';
+}
+
+.Headline_1 {
+    flex: 1;
+    Align: center;
+}
+
+.Headline_2 {
+    flex: 1;
+    text-align: center;
+}
+
+.Headline_3 {
+    flex: 1;
+    text-align: center;
+}
+
+.Headline_4 {
+    flex: 1;
+    position: center;
+    text-align: right;
+}
+
+
+/* Project and year */
+
+.Title-line {
+    display: flex;
+    flex-direction: row
+}
+
+.Title-line-01 {
+    flex: 1;
+    font-family: 'lirmaregular';
+    font-size: 25px;
+}
+
+.Title-line-02 {
+    flex: 1;
+}
+
+.Title-line-03 {
+    flex: 1;
+}
+
+.Title-line-04 {
+    flex: 1;
+    font-family: 'lirmaregular';
+    text-align: right;
+    font-size: 25px;
+}
+
+
+/* Specific projectnames */
+
+.ProjectName-01 {
+    flex: 1;
+    font-family: 'lirmaregular';
+    font-size: 25px;
+}
+
+
+/* Slideshow container */
+
+.slideshow-container {
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+}
+
+.content {
+    display: none;
+    flex-direction: row;
+    flex-direction: wrap;
+}
+
+
+/* Specific contents */
+
+.content-01 {
+    display: flex;
+    flex-direction: row;
+    flex-direction: wrap;
+}
+
+.Flexbox_1 {
+    flex: 1;
+    font-family: 'Helvetica Neue';
+    font-size: 20px;
+}
+
+.Flexbox_2 {
+    flex: 1;
+}
+
+.Flexbox_3 {
+    flex: 1;
+}
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a grey background color */
+
+.prev:hover,
+.next:hover {
+    background-color: #f1f1f1;
+    color: black;
+}

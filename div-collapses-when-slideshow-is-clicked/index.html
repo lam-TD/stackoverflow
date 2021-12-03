@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+<script>
+    var iShown = 0;
+
+    function Show_Content(iContent) {
+        if (iShown > 0) {
+            document.getElementById("content" + iShown).style.display = "none";
+        }
+
+        if (iContent !== iShown) {
+            document.getElementById("content" + iContent).style.display = "block";
+            iShown = iContent;
+        } else {
+            iShown = 0;
+        }
+    }
+</script>
+
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<div class="Headline">
+    <div class="Headline_1">Carina Thornval</div>
+    <div class="Headline_2">mail@cthornval.com</div>
+    <div class="Headline_3">+4571580488</div>
+    <div class="Headline_4">Curriculum vitae available upon request</div>
+</div>
+<div data-id="1" class="Project">
+    <div class="Title-line">
+        <div class="Title-line-01">
+            <p>Region H</p>
+        </div>
+
+        <div class="Title-line-02">
+
+        </div>
+
+        <div class="Title-line-03">
+
+        </div>
+
+        <div class="Title-line-04">
+            <p>2021</p>
+        </div>
+
+    </div>
+    <div id="content1" class="content">
+
+        <div class=Flexbox_1>
+            <p>
+            </p>
+        </div>
+        <div class=Flexbox_2></div>
+        <div class=Flexbox_3>
+            <div class="slideshow-container">
+                <div class="mySlides1">
+                    <img src="00000181_p.jpg" type="video/mp4" style="width:100%">
+                </div>
+
+
+                <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div data-id="2" class="Project">
+
+    <div class="Title-line">
+        <div class="Title-line-01">
+            <p>CIFF</p>
+        </div>
+        <div class="Title-line-02">
+
+        </div>
+
+        <div class="Title-line-03">
+
+        </div>
+
+        <div class="Title-line-04">
+            <p>2020</p>
+        </div>
+
+    </div>
+
+    <div id="content2" class="content">
+
+        <div class=Flexbox_1>
+            <p>
+                School Project
+                <br> Strategic design
+                <br> <br> We were presented with the challenge of rethinking CIFF´s business model as the organisation
+                was facing mounting challenges, as they were prohibited from throwing their annual fashion fair at Bella
+                Center, because of the outbreak of
+                the coronavirus. Therefor we proposed a new format for their trade fair: A digital platform, where
+                brands and buyers can engage online through payingf a monthly subscription. Moreover brands are invited
+                to rent a physical "stage”/pavillion from
+                where they can livestream content, through for example throwing events or having a showroom. The content
+                produced will then reciprocally be distributed on the online platform. The stage is a modular and mobile
+                architectural entity, which can be
+                placed all over the country and where the interior can be adapted to suit the needs of the brand renting
+                the stage.
+                <br> <br> This project was a collaboration with Fie Eleonora Mortensen, Gustavo Garcia og Laura
+                Winter-Poulsen.
+                <br> <br>
+
+                <a href="">
+                    Images and video
+                </a>
+            </p>
+
+        </div>
+        <div class=Flexbox_2></div>
+        <div class=Flexbox_3>
+
+            <div class="slideshow-container">
+
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_01 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_02 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_03 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_04 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_05 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_06 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_07 copy.png" style="width:100%">
+                </div>
+
+                <div class="mySlides2">
+                    <img src="Images/02_CIFF/PSD_Archiitecture_07 copy.png" style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let $content = $('.content');
+
+    let $projects = $('.Project').on('click', e => {
+        let $target = $(e.currentTarget).find('.content').addClass('active');
+        $content.not($target).removeClass('active');
+    });
+</script>
+
+
+</body>
+</html>

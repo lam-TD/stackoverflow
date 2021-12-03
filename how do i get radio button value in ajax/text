@@ -1,0 +1,47 @@
+The html syntax in your form is not correct. It should be like this:
+
+   <form name="myForm">
+        <label>
+            <input type="radio" name="continent" value="Africa" checked>
+            Africa
+        </label>
+        <br/>
+        <label>
+            <input type="radio" name="continent" value="Australia/Oceania">
+            Australia/Oceania
+        </label>
+        <br/>
+        <label>
+            <input type="radio" name="continent" value="Europe">
+            Europe.
+        </label>
+        <br/>
+        <button id="submit">Search</button>
+    </form>
+
+You can use Jquery to get value of selected radio and [ajax][1] to submit form.
+
+Use like this
+
+    <script>
+        const myForm = $('form[name="myForm"]');
+        myForm.submit(function (e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form
+
+            // Get value of selected radio
+            let dataFormRadio = $('input[name="continent"]:checked').val();
+            $.ajax({
+                method: "GET",
+                url: "/your-url.php",
+                data: {continent: dataFormRadio}
+            })
+                .done(function (res) {
+                    console.log('request successful')
+                })
+                .fail(function (res) {
+                    console.log('request failed')
+                });
+        });
+    </script>
+
+  [1]: https://api.jquery.com/jquery.ajax/

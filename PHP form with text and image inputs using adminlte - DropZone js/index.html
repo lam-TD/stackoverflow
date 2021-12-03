@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!--<form action="/file-upload.php" class="dropzone" id="my-awesome-dropzone"></form>-->
+<div class="dropzone" id="template">
+
+</div>
+
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+<script  type="text/javascript">
+    Dropzone.autoDiscover = false
+
+    const formData = new FormData();
+    const fileNames = [];
+
+    var myDropzone = new Dropzone('div#template', { // Make the whole body a dropzone
+        url: "/target-url", // Set the url
+        // thumbnailWidth: 80,
+        // thumbnailHeight: 80,
+        parallelUploads: 20,
+        // previewTemplate: previewTemplate,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        // previewsContainer: "#previews", // Define the container to display the previews
+        // clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    })
+
+    myDropzone.on("addedfile", file => {
+        console.log(file);
+        fileNames.push(file.name)
+        formData.append('file[]', file.name)
+    });
+
+</script>
+
+
+
+</body>
+</html>
