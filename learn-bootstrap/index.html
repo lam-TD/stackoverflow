@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="assets/bootstrap@5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap@5.1.3/bootstrap-icons-1.7.1/bootstrap-icons.css">
+    <link href="assets/bootstrap@5.1.3/css/style.css" rel="stylesheet">
+
+    <!--  Google Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
+    <!--  Google Font  -->
+
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Stackoverflow</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <form class="d-flex w-50">
+                    <!--                    <input class="form-control me-2 input-search" type="search" placeholder="Search" aria-label="Search">-->
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text span-search" id="addon-wrapping"><i
+                                class="bi bi-search"></i></span>
+                        <input type="text" class="form-control me-2 input-search" placeholder="Search"
+                               aria-label="Search" aria-describedby="addon-wrapping">
+                    </div>
+                </form>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item text-end justify-content-end">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-archive"></i></a>
+                    </li>
+                    <li class="nav-item text-end justify-content-end">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-alarm"></i></a>
+                    </li>
+                    <li class="nav-item text-end justify-content-end">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wallpaper row mt-5 bg-gradient">
+        <!--    RIGHT BAR START    -->
+        <div class="col-md-2 bg-gradient mt-4">
+            <h3 class="text-center">Lam Tran Duc</h3>
+        </div>
+        <!--    RIGHT BAR START    -->
+
+        <!--    CONTENT BAR START    -->
+        <div class="col-md-8 bg-gradient mt-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="">All Questions</h4>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-info btn-sm">Ask Question</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pt-2 pb-2">
+                    Tagged with:
+                    <button class="btn btn-sm btn-outline-warning tag-post">php</button>
+                    <button class="btn btn-sm btn-outline-warning tag-post">javascript</button>
+                </div>
+
+                <div class="col-md-12 pt-2 pb-2 d-flex">
+                    <span class="flex-fill h5">48,726 questions</span>
+                    <div class="btn-group me-4" role="group" aria-label="">
+                        <button class="btn btn-sm btn-outline-secondary">Newest</button>
+                        <button class="btn btn-sm btn-outline-secondary">Active</button>
+                        <button class="btn btn-sm btn-outline-secondary">Bounties</button>
+                        <button class="btn btn-sm btn-outline-secondary">Unanswered</button>
+                        <button class="btn btn-sm btn-outline-secondary">More</button>
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-outline-info"><i class="bi bi-filter"></i>Filter
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 question-summary d-flex align-items-center">
+                    <div class="status-container flex-fill">
+                        <div class="stats p-2 border rounded-3 text-center">
+                            <div class="vote-count-post">100</div>
+                            <div class="">votes</div>
+                        </div>
+                        <div class="stats p-2 border border-success bg-success rounded-3 text-center">
+                            <div class="vote-count-post">100</div>
+                            <div class="">votes</div>
+                        </div>
+                        <div class="stats p-2">10 views</div>
+                    </div>
+                    <div class="card summary flex-fill">
+                        <div class="card-body">
+                            <h5 class="card-title">PHP sidebar not match with my html content</h5>
+                            <p class="card-text">I'm currently working on a website that requires me to load the image
+                                source of an tag from an external website via jQuery or PHP in order to embed that image
+                                on my page, is there any way to do this ...</p>
+
+                            <div class="d-flex flex-row">
+                                <div class="tag-list flex-fill">
+                                    <button class="btn btn-sm btn-outline-warning tag-post">php</button>
+                                    <button class="btn btn-sm btn-outline-warning tag-post">javascript</button>
+                                </div>
+                                <div class="d-flex flex-column user-info">
+                                    <div class="user-action-time">
+                                        asked <span title="2021-11-29 04:09:31Z" class="relativetime">Nov 29 at 4:09</span>
+                                    </div>
+
+                                    <div class="d-flex user-details">
+                                        <div class="user-avatar">
+                                            <img src="assets/images/00000181_p.jpg" class="img-fluid rounded-start rounded-3" alt="...">
+                                        </div>
+                                        <div class="d-flex flex-column ps-1">
+                                            <a href="#" class="username">Next Problem</a>
+                                            <div class="flair">
+                                                <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+                                                <span title="2 bronze badges" aria-hidden="true">
+                                                    <span class="badge3"></span>
+                                                    <span class="badge-count">2</span>
+                                                </span>
+                                                <span class="v-visible-sr d-none">2 bronze badges</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 question-summary d-flex align-items-center">
+                    <div class="status-container flex-fill">
+                        <div class="stats p-2 border rounded-3 text-center">
+                            <div class="vote-count-post">100</div>
+                            <div class="">votes</div>
+                        </div>
+                        <div class="stats p-2 border border-success rounded-3 text-center">
+                            <div class="vote-count-post">100</div>
+                            <div class="">votes</div>
+                        </div>
+                        <div class="stats p-2">10 views</div>
+                    </div>
+                    <div class="card summary flex-fill">
+                        <div class="card-body">
+                            <h5 class="card-title">PHP sidebar not match with my html content</h5>
+                            <p class="card-text">I'm currently working on a website that requires me to load the image
+                                source of an tag from an external website via jQuery or PHP in order to embed that image
+                                on my page, is there any way to do this ...</p>
+
+                            <div class="d-flex flex-row">
+                                <div class="tag-list flex-fill">
+                                    <button class="btn btn-sm btn-outline-warning tag-post">php</button>
+                                    <button class="btn btn-sm btn-outline-warning tag-post">javascript</button>
+                                </div>
+                                <div class="d-flex flex-column user-info">
+                                    <div class="user-action-time">
+                                        asked <span title="2021-11-29 04:09:31Z" class="relativetime">Nov 29 at 4:09</span>
+                                    </div>
+
+                                    <div class="d-flex user-details">
+                                        <div class="user-avatar">
+                                            <img src="assets/images/00000181_p.jpg" class="img-fluid rounded-start rounded-3" alt="...">
+                                        </div>
+                                        <div class="d-flex flex-column ps-1">
+                                            <a href="#" class="username">Next Problem</a>
+                                            <div class="flair">
+                                                <span class="reputation-score" title="reputation score" dir="ltr">1</span>
+                                                <span title="2 bronze badges" aria-hidden="true">
+                                                    <span class="badge3"></span>
+                                                    <span class="badge-count">2</span>
+                                                </span>
+                                                <span class="v-visible-sr d-none">2 bronze badges</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--    CONTENT BAR END    -->
+
+        <!--    LEFT BAR START    -->
+        <div class="col-md-2 bg-gradient mt-2">
+            <div class="mt-2 card border-warning">
+                <div class="card-header">
+                    The Overflow Blog
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Check out the Stack Exchange sites that turned 10 years old in Q4</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Migrating metrics from InfluxDB to M3</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Migrating metrics from InfluxDB to M3</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-header">Featured on Meta</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-bookmark pe-2"></i>
+                            <span>Reducing the weight of our footer</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-bookmark-x pe-2"></i>
+                            <span>Two B or not two B - Farewell, BoltClock and Bhargav!</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Two B or not two B - Farewell, BoltClock and Bhargav!</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-header">Hot Meta Posts</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Check out the Stack Exchange sites that turned 10 years old in Q4</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Migrating metrics from InfluxDB to M3</span>
+                        </li>
+                        <li class="list-group-item sidebar-widget--item d-flex flex-row">
+                            <i class="bi bi-pencil pe-2"></i>
+                            <span>Migrating metrics from InfluxDB to M3</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--    LEFT BAR END    -->
+    </div>
+</div>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="assets/bootstrap@5.1.3/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

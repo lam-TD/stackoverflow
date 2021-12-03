@@ -1,0 +1,106 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --bs-sm: 0 1px 2px hsla(0,0%,0%,0.1), 0 1px 4px hsla(0,0%,0%,0.1),  0 2px 8px hsla(0,0%,0%,0.1);
+    --bc-darker: hsl(210, 5.5%, 43.5%);
+    --green-500: hsl(140, 35%, 54.5%);
+    --black-400: hsl(210, 8%, 65%);
+    --black-025: hsl(0, 0%, 22.5%);
+    --theme-link-color: hsl(206, 100%, 60%);
+    --text-coler-dark-mode: white;
+}
+
+html, body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.wallpaper {
+}
+
+.tag-post {
+    font-size: 10px;
+    padding: 5px 4px;
+    white-space: nowrap;
+}
+
+.status-container {
+    width: 85px;
+}
+
+.wallpaper .list-group-item {
+    border: none;
+    padding: 5px 0;
+}
+
+.sidebar-widget--item {
+    font-size: .8rem;
+}
+
+input.input-search {
+    border: 1px solid var(--bc-darker);
+    border-radius: 3px;
+}
+
+.span-search {
+    border: 1px solid var(--bc-darker);
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.question-summary {
+    border-top: 1px solid #ddd;
+}
+
+.question-summary:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.summary {
+    border: none;
+}
+
+.summary .card-title {
+    color: var(--theme-link-color);
+}
+
+.status-container .stats {
+    margin: 2px;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px 5px !important;
+}
+
+.stats.border.border-success.bg-success {
+    color: white;
+}
+
+.stats.border.border-success {
+    color: var(--green-500);
+}
+
+.user-info {
+
+}
+
+.user-info .user-action-time {
+    font-size: 11px;
+    color: var(--black-400);
+}
+
+.user-info .user-avatar {
+    height: 32px;
+    width: 32px;
+}
+
+.user-info .user-avatar img {
+    height: 100%;
+    width: 100%;
+}
+
+.user-info .user-details {
+    float: left;
+}
+
+.user-info .user-details .username, .flair {
+    font-size: 10px;
+}
