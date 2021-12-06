@@ -20,34 +20,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-<select
-        class="w-full mt-8 no-border">
-    <optgroup label="Tenants">
-        <option>Create Proposal</option>
-        <option>Retrieve Customer Data</option>
-        <option>Edit Dependant Data</option>
-    </optgroup>
-
-    <optgroup label="User">
-        <option>User 1</option>
-        <option>User 2</option>
-        <option>User 3</option>
-    </optgroup>
-</select>
-
-<select multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="3"
-        class="w-full mt-8 no-border">
-    <optgroup label="Tenants">
-        <option>Create Proposal</option>
-        <option>Retrieve Customer Data</option>
-        <option>Edit Dependant Data</option>
-    </optgroup>
-
-    <optgroup label="User">
-        <option>User 1</option>
-        <option>User 2</option>
-        <option>User 3</option>
-    </optgroup>
+<select id="mySelect" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="3" class="w-full mt-8 no-border">
+<optgroup label="Tenants">
+    <option value="Create Proposal">Create Proposal</option>
+    <option value="Retrieve Customer Data">Retrieve Customer Data</option>
+    <option value="Edit Dependant Data">Edit Dependant Data</option>
+</optgroup>
+<optgroup label="User">
+    <option value="User 1">User 1</option>
+    <option value="User 2">User 2</option>
+    <option value="User 3">User 3</option>
+</optgroup>
 </select>
 
 <script>
@@ -160,6 +143,7 @@
 
 
         document.querySelectorAll("select[multiple]").forEach((el, k) => {
+            var dataChecked = [];
             var
                 div = newEl('div', {
                     class: 'multiselect-dropdown',
@@ -182,7 +166,6 @@
             div.appendChild(listWrap);
             listWrap.appendChild(list);
 
-
             el.loadOptions = () => {
                 list.innerHTML = '';
 
@@ -199,13 +182,12 @@
                         var ch = op.querySelector("input").checked;
                         list.querySelectorAll("input").forEach(i => i.checked = ch);
                         Array.from(el.options).map(x => x.selected = ch);
-
+                        dataChecked = $('#mySelect').val();
                         el.dispatchEvent(new Event('change'));
                     });
                     ic.addEventListener('click', (ev) => {
                         ic.checked = !ic.checked;
                     });
-
                     list.appendChild(op);
                 }
 
@@ -216,7 +198,23 @@
                     let label = $(`<div class="label-group">${$(groupOption).attr('label')}</div>`)
 
                     $.each(groupOption.children, function (index, option) {
-                        let child = $(`<div><input type="checkbox"><label>${$(option).text()}</label></div>`)
+                        let child = $(`<div><label><input class="item" data-option="${$(option).val()}" type="checkbox"> ${$(option).text()}</label></div>`)
+
+                        child.on('click', 'label', function () {
+                            let input = $(this).find('input')
+                            let optionValue = input.data('option')
+                            let isChecked = input.prop('checked')
+
+                            if (isChecked && dataChecked.indexOf(optionValue) === -1) {
+                                dataChecked.push(optionValue)
+                            } else if (!isChecked && dataChecked.indexOf(optionValue) !== -1) {
+                                dataChecked.splice(dataChecked.indexOf(optionValue), 1);
+                            }
+                            // Check all checkboxes are checked or not?
+                            $('.multiselect-dropdown-all-selector').find('input').prop('checked', !$('input.item:checkbox:not(:checked)').length > 0)
+
+                            $('#mySelect').val(dataChecked)
+                        });
                         $(label).append(child)
                     })
 
@@ -224,9 +222,7 @@
                 })
                 // my idea is here end
 
-
                 div.listEl = listWrap;
-
                 div.refresh = () => {
                     div.querySelectorAll('span.optext, span.placeholder').forEach(t => div.removeChild(t));
                     var sels = Array.from(el.selectedOptions);
