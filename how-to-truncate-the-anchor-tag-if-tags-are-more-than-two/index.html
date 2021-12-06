@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<style>
+    .mbc-link-back {
+        color: #0066cc;
+        text-decoration: none;
+    }
+
+    #menu-breadcrumb a {
+        display: none;
+    }
+
+    #menu-breadcrumb a.active {
+        display: unset;
+    }
+
+    #menu-breadcrumb a:first-child {
+        display: unset;
+    }
+
+    #menu-breadcrumb a:last-child {
+        display: unset;
+    }
+
+    #menu-breadcrumb a+a::before {
+        color: #222;
+        content: '>';
+        cursor: default;
+        padding: 0 3px;
+    }
+</style>
+
+
+<div id="menu-breadcrumb">
+    <a href="">Demo 1</a>
+    <a href="">Demo 2</a>
+    <a href="">Demo 3</a>
+    <a href="">Demo 4</a>
+</div>
+
+<script>
+    if ($("#menu-breadcrumb a").length > 2 ) {
+        $("#menu-breadcrumb a:first").after('<a class="mbc-link-back active" href="#" data-menu-item-id="">...</a>');
+        $("#menu-breadcrumb a.active").on('click', function() {
+            $("#menu-breadcrumb a").toggleClass('active');
+        });
+    }
+</script>
+
+
+</body>
+</html>
