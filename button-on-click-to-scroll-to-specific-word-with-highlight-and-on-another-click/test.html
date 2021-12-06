@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
+
+<style>
+    p {
+        margin-bottom: 15px;
+    }
+
+    ul {
+        margin: 20px;
+    }
+
+    li {
+        display: block;
+        margin: 50px 5px;
+        padding: 5px;
+        background-color: #aaa;
+    }
+
+    a {
+        display: block;
+        margin: 50px 5px;
+        padding: 5px;
+        background-color: #eee;
+    }
+
+    html .hilite {
+        background-color: #ff0;
+    }
+
+    body {
+        margin-top: 30px;
+    }
+
+    #trigger {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 5px;
+        height: 25px;
+        width: 100%;
+    }
+
+    #trigger:hover {
+        background-color: #CFC;
+    }
+
+</style>
+
+<body>
+<a id="trigger" href='#'>find next</a>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Vestibulum enim tellus, vulputate vel mattis in, ullamcorper quis erat. Vestibulum ultricies quam eget tortor
+    volutpat mollis. Vestibulum vel erat at arcu eleifend molestie. Suspendisse eu vestibulum erat. Donec est nulla,
+    lacinia et condimentum eu, pulvinar in quam. Maecenas condimentum urna eget augue eleifend non rhoncus arcu euismod.
+    Donec vel lacus eget risus ullamcorper sodales. Proin vitae ipsum justo, a semper ipsum. Pellentesque scelerisque
+    mattis porta. Vivamus quis augue urna. Quisque lectus dolor, pulvinar eget tristique quis, facilisis eget libero.
+    Nulla quam tellus, vestibulum vitae malesuada sit amet, condimentum eget libero. Vivamus odio metus, consectetur a
+    consectetur eu, ultrices vitae risus.
+</p>
+<p>
+    Fusce vulputate, odio vel malesuada feugiat, justo tellus ullamcorper tellus, eget pretium dolor velit ut justo.
+    Suspendisse quis nulla ipsum. Etiam quis risus velit. Donec condimentum, urna eu fringilla accumsan, urna quam
+    laoreet nibh, quis congue ipsum velit eu lorem. Suspendisse dignissim mollis fermentum. Nunc nisl ante, euismod eu
+    ullamcorper id, rutrum eu neque. Praesent commodo aliquam placerat. Integer eleifend pellentesque bibendum.
+</p>
+<p>
+    Mauris mollis, felis non porta facilisis, tortor sem placerat elit, ut facilisis diam enim sit amet lectus. Integer
+    ac mattis turpis. Nullam nisi ipsum, gravida eu pharetra non, tempus at lorem. Nulla consectetur arcu elit, in
+    lacinia nisi. Integer non lacus nisi. Integer libero eros, egestas pellentesque rhoncus eu, ultrices adipiscing
+    diam. Quisque convallis eros ut magna fermentum sed aliquet arcu elementum. Praesent placerat arcu vel neque
+    consectetur iaculis. Nulla pharetra eleifend blandit. Curabitur a leo erat. Sed vel pharetra turpis. Curabitur in
+    egestas turpis. Morbi nibh sapien, lacinia sed tempor placerat, pretium vitae libero. Praesent tincidunt orci sit
+    amet erat accumsan laoreet. Vestibulum sed lectus vitae nisl luctus ornare. Nam laoreet, orci at feugiat
+    sollicitudin, nibh justo tincidunt augue, ac ultrices risus nunc a odio.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed laoreet urna. Proin mi nibh, aliquam accumsan
+    adipiscing mattis, lacinia a ipsum. Nullam placerat magna at nisl interdum accumsan. Cras id urna sed augue interdum
+    condimentum quis blandit leo. Donec sed turpis lectus. Mauris dolor eros, faucibus nec volutpat nec, pharetra vitae
+    leo. Fusce tincidunt mattis orci non volutpat. Ut ornare feugiat elit ut semper. Aliquam et dolor metus.
+</p>
+<p>
+    Ut ut dolor libero, non tincidunt dui. Praesent vitae tincidunt lacus. Class aptent taciti sociosqu ad litora
+    torquent per conubia nostra, per inceptos himenaeos. Integer volutpat consectetur neque, sit amet euismod neque
+    aliquet ultrices. Aenean ac mi elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Suspendisse nec metus lectus, sagittis condimentum sem. Donec sed urna vel quam mollis ultricies
+    sed non velit. Fusce varius ipsum nec tellus auctor tincidunt molestie urna ullamcorper. Proin non lorem diam, a
+    lacinia lectus.
+</p>
+<p>
+    Vestibulum enim tellus, vulputate vel mattis in, ullamcorper quis erat. Vestibulum ultricies quam eget tortor
+    volutpat mollis. Vestibulum vel erat at arcu eleifend molestie. Suspendisse eu vestibulum erat. Donec est nulla,
+    lacinia et condimentum eu, pulvinar in quam. Maecenas condimentum urna eget augue eleifend non rhoncus arcu euismod.
+    Donec vel lacus eget risus ullamcorper sodales. Proin vitae ipsum justo, a semper ipsum. Pellentesque scelerisque
+    mattis porta. Vivamus quis augue urna. Quisque lectus dolor, pulvinar eget tristique quis, facilisis eget libero.
+    Nulla quam tellus, vestibulum vitae malesuada sit amet, condimentum eget libero. Vivamus odio metus, consectetur a
+    consectetur eu, ultrices vitae risus.
+</p>
+<p>
+    Fusce vulputate, odio vel malesuada feugiat, justo tellus ullamcorper tellus, eget pretium dolor velit ut justo.
+    Suspendisse quis nulla ipsum. Etiam quis risus velit. Donec condimentum, urna eu fringilla accumsan, urna quam
+    laoreet nibh, quis congue ipsum velit eu lorem. Suspendisse dignissim mollis fermentum. Nunc nisl ante, euismod eu
+    ullamcorper id, rutrum eu neque. Praesent commodo aliquam placerat. Integer eleifend pellentesque bibendum.
+</p>
+<p>
+    Mauris mollis, felis non porta facilisis, tortor sem placerat elit, ut facilisis diam enim sit amet lectus. Integer
+    ac mattis turpis. Nullam nisi ipsum, gravida eu pharetra non, tempus at lorem. Nulla consectetur arcu elit, in
+    lacinia nisi. Integer non lacus nisi. Integer libero eros, egestas pellentesque rhoncus eu, ultrices adipiscing
+    diam. Quisque convallis eros ut magna fermentum sed aliquet arcu elementum. Praesent placerat arcu vel neque
+    consectetur iaculis. Nulla pharetra eleifend blandit. Curabitur a leo erat. Sed vel pharetra turpis. Curabitur in
+    egestas turpis. Morbi nibh sapien, lacinia sed tempor placerat, pretium vitae libero. Praesent tincidunt orci sit
+    amet erat accumsan laoreet. Vestibulum sed lectus vitae nisl luctus ornare. Nam laoreet, orci at feugiat
+    sollicitudin, nibh justo tincidunt augue, ac ultrices risus nunc a odio.
+</p>
+
+<script>
+    jQuery(function ($) {
+        // stores the currently highlighted occurence
+        var index = 0;
+        var findText = 'sed';
+
+        // you could do this inside the click as well, here, it's cached/faster
+        // inside click, it would be more dynamic and prevent memory leaks
+        // just depends on your needs
+        // you would also want to start with a parent element as $('*') is costly!
+        var $occurrences = $('*').filter(function () {
+            return $(this).children().length < 1 && $(this).text().indexOf(findText) >= 0;
+        });
+        // remove existing highlights, then find the next occurrence and highlight it
+        $('#trigger').click(function () {
+            debugger
+
+            if (index == $occurrences.length - 1) {
+                index = 0;
+            }
+            $occurrences.find('span.hilite').replaceWith(findText);
+            var $next = $occurrences.eq(++index);
+            $next.html($next.html().replace(findText, '<span class="hilite">' + findText + '</span>'));
+            $(document).scrollTop($next.offset().top - 35);
+            return false;
+        });
+
+        // scroll our trigger link when the screen moves so we can click it again
+        $(window).scroll(function () {
+            var top = $(window).scrollTop();
+            $('#trigger').offset({top: top, left: 0});
+        });
+
+    });
+</script>
+</body>
+</html>
