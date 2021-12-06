@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</head>
+<body>
+
+<style>
+    .job {
+        width: 50px;
+        height: 15px;
+        padding: 2px;
+        margin: 0px 5px 10px 0;
+        border: 1px solid red;
+        background-color: #B9CD6D;
+    }
+
+    .dropJob {
+        display: grid;
+        grid-template-columns: 12vh repeat(9, 1fr);
+    }
+
+    .dropJob div {
+        border: 2px solid #1974a8;
+        border-right: none;
+        border-bottom: none;
+        padding: 3px 4px;
+        background: #a5d5ff;
+        line-height: 25px;
+    }
+
+    .dropJob div:nth-of-type(10n) {
+        border-right: 2px solid #1974a8;
+    }
+
+    .dropJob div:nth-last-child(-n + 10) {
+        border-bottom: 2px solid #1974a8;
+    }
+
+    .dropJob div:nth-child(10n + 1) {
+        background: #32a4e5;
+        font-size: 12px;
+        text-shadow: 1px 1px 2px #103143;
+        color: #e3f5ff;
+    }
+
+    .dropped {
+        background: green;
+    }
+
+    .timing {
+        display: grid;
+        grid-template-columns: 12vh repeat(9, 1fr);
+    }
+
+    .dropped-child {
+        border-left: none !important;
+    }
+</style>
+
+
+<div class="wallpaper">
+    <div class="job" data-column="4">Job-A</div>
+    <div class="job" data-column="1">Job-B</div>
+    <div class="job" data-column="2">Job-C</div>
+    <div class="job" data-column="7">Job-D</div>
+
+    <div class="scheduleContain">
+        <div class="timing">
+            <div>Name</div>
+            <div>9am</div>
+            <div>10am</div>
+            <div>11am</div>
+            <div>12am</div>
+            <div>1pm</div>
+            <div>2pm</div>
+            <div>3pm</div>
+            <div>4pm</div>
+            <div>5pm</div>
+        </div>
+
+        <div class="dropJob">
+            <div>John Smith</div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.job').draggable({
+            revert: true
+        });
+
+        $('.container').droppable({
+            hoverClass: 'active',
+            drop: function (e, ui) {
+                const job = ui.draggable
+                let columnSize = job.data('column')
+                let tempContainer = $(this);
+                let randomColor = "#" + Math.floor(Math.random()*16777215).toString(16) + " !important";
+
+                for (let i = 1; i <= columnSize; i++) {
+                    $(tempContainer).addClass('dropped')
+
+                    $(tempContainer).css('background-color', randomColor)
+                    if (i > 1 && i <= columnSize) {
+                        $(tempContainer).addClass('dropped-child')
+                    }
+                    $(tempContainer).data('job-id', job.text())
+                    tempContainer = tempContainer.next();
+                }
+                $(this).html(ui.draggable.remove().html());
+                $(this).droppable('destroy');
+                $(this).addClass("dropped");
+            },
+            over: function (e, ui) {
+                $(this).addClass("dropped");
+            },
+            out: function (e, ui) {
+                $(this).removeClass("dropped");
+            }
+        });
+    });
+</script>
+</body>
+</html>
