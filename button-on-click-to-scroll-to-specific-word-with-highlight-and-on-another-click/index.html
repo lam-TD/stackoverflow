@@ -25,7 +25,6 @@
 
 <body>
 <hr>
-<input id="input-search" type="text" value="bana">
 <button id="search">Find</button>
 <hr>
 <div class="icePnlGrp" id="fgmevtcfm:j_id1386" style="width: 100%; height: 600px; overflow: auto;">
@@ -71,7 +70,6 @@
     let findText = 'appl';
 
     search.click(function () {
-        findText = $('#input-search').val().trim()
         let $occurrences = $('.tblAlternate3 tbody tr').filter(function () {
             console.log($(this).find(`td:contains("${findText}")`).length > 0)
             return $(this).find(`td:contains("${findText}")`).length > 0;
@@ -85,19 +83,14 @@
             return;
         }
 
-        main.find('span.hilite').replaceWith(findText);
-        clear()
+        $occurrences.find('span.hilite').replaceWith(findText);
+
         let $next = $occurrences.eq(index++);
         const textReplace = $next.find('td:last-child').html().replace(findText, '<span class="hilite">' + findText + '</span>')
         $next.find('td:last-child').html(textReplace)
         $(document).scrollTop($next.offset().top - 35);
         return false;
     })
-
-    function clear() {
-        let html = main.find('span.hilite').html()
-        console.log(html)
-    }
 
     // scroll our trigger link when the screen moves so we can click it again
     $(window).scroll(function () {
