@@ -16,6 +16,7 @@
     html, body {
         width: 100%;
         height: 100%;
+        box-sizing: border-box;
     }
 
     html .hilite {
@@ -25,7 +26,8 @@
 
 <body>
 <hr>
-<button id="search">Find</button>
+<input id="input-search" type="text" placeholder="Enter search">
+<button id="search">Search</button>
 <hr>
 <div class="icePnlGrp" id="fgmevtcfm:j_id1386" style="width: 100%; height: 600px; overflow: auto;">
     <table class="tblAlternate3" border="1">
@@ -40,22 +42,55 @@
         <tr>
             <td class="">1</td>
             <td>example</td>
-            <td>apples</td>
+            <td data-text="apples">apples</td>
         </tr>
         <tr>
             <td class="">2</td>
             <td>example</td>
-            <td>pear</td>
+            <td data-text="pear">pear</td>
         </tr>
         <tr>
             <td class="">3</td>
             <td>example</td>
-            <td>banana</td>
+            <td data-text="banana">banana</td>
         </tr>
         <tr>
             <td class="">4</td>
             <td>example</td>
-            <td>apples</td>
+            <td data-text="apples">apples</td>
+        </tr>
+
+        <tr>
+            <td class="">3</td>
+            <td>example</td>
+            <td data-text="banana">banana</td>
+        </tr>
+        <tr>
+            <td class="">4</td>
+            <td>example</td>
+            <td data-text="apples">apples</td>
+        </tr>
+
+        <tr>
+            <td class="">3</td>
+            <td>example</td>
+            <td data-text="banana">banana</td>
+        </tr>
+        <tr>
+            <td class="">4</td>
+            <td>example</td>
+            <td data-text="apples">apples</td>
+        </tr>
+
+        <tr>
+            <td class="">3</td>
+            <td>example</td>
+            <td data-text="banana">banana</td>
+        </tr>
+        <tr>
+            <td class="">4</td>
+            <td>example</td>
+            <td data-text="apples">apples</td>
         </tr>
 
         </tbody>
@@ -65,16 +100,22 @@
 
 <script>
     const search = $('#search');
+    const inputSearch = $('#input-search');
     const main = $('.tblAlternate3 tbody tr')
     let index = 0;
     let findText = 'appl';
 
+
+    inputSearch.change(function () {
+        index = 0
+    })
     search.click(function () {
+        findText = inputSearch.val().trim()
+
         let $occurrences = $('.tblAlternate3 tbody tr').filter(function () {
-            console.log($(this).find(`td:contains("${findText}")`).length > 0)
             return $(this).find(`td:contains("${findText}")`).length > 0;
         });
-        if ($occurrences.length < 0) {
+        if ($occurrences.length <= 0) {
             alert('Could not find');
             return;
         }
@@ -82,15 +123,27 @@
         if (index > $occurrences.length - 1) {
             return;
         }
-
-        $occurrences.find('span.hilite').replaceWith(findText);
+        clearSearch()
 
         let $next = $occurrences.eq(index++);
         const textReplace = $next.find('td:last-child').html().replace(findText, '<span class="hilite">' + findText + '</span>')
         $next.find('td:last-child').html(textReplace)
+
+
         $(document).scrollTop($next.offset().top - 35);
         return false;
     })
+
+    function clearSearch() {
+        let span = main.find('td:last-child')
+        if (!span) return;
+        $.each(span, function (index, value) {
+            if ($(value).has('span').length > 0)
+                $(value).has('span').html($(value).data('text'))
+        })
+
+
+    }
 
     // scroll our trigger link when the screen moves so we can click it again
     $(window).scroll(function () {
