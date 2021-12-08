@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+
+<div class="ui container">
+    <div class="ui grid">
+        <div class="ui sixteen column">
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var todayDate = new Date();
+    $('#calendar').fullCalendar({
+        defaultDate: todayDate,
+        eventLimit: true, // allow "more" link when too many events
+        events: [{
+            title: 'XX-XXXXX-X: YYYY,AAAAAA,BBBBB,CCCCCC,DDDDD,EEEEEE,FFFFFF,GGGGGG',
+            start: '2021-12-09',
+            color: 'yellow',
+            description: 'description for Long Event',
+        }],
+        eventMouseover: function(calEvent, jsEvent) {
+            var tooltip = '<div class="tooltipevent" style="width:100px;height:100px;background:#ccc;position:absolute;z-index:10001;">' + calEvent.title + '</div>';
+            var $tooltip = $(tooltip).appendTo('body');
+
+            $(this).mouseover(function(e) {
+                $(this).css('z-index', 10000);
+                $tooltip.fadeIn('500');
+                $tooltip.fadeTo('10', 1.9);
+            }).mousemove(function(e) {
+                $tooltip.css('top', e.pageY + 10);
+                $tooltip.css('left', e.pageX + 20);
+            });
+        },
+
+        eventMouseout: function(calEvent, jsEvent) {
+            $(this).css('z-index', 8);
+            $('.tooltipevent').remove();
+        },
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+
+<style>
+    body {
+        background: #FFF;
+        padding: 20px;
+        font-family: Helvetica;
+    }
+
+    .slider {
+        color: #333;
+        padding: 0 0 30px;
+    }
+
+    .slide {
+        font-size: 90px;
+        width: 150px;
+        padding: 10px 0;
+        margin: 0;
+        text-align: center;
+        border: 1px solid #999;
+    }
+
+    .slide.locked {
+        background: rgba(255, 255, 0, 0.5);
+    }
+
+    .slick-prev, .slick-next {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .slick-next {
+        left: 80px;
+    }
+</style>
+
+
+<body>
+<div class="slider">
+    <div class="slide">1</div>
+    <div class="slide">2</div>
+    <div class="slide">3</div>
+    <div class="slide">4</div>
+    <div class="slide">5</div>
+    <div class="slide">6</div>
+    <div class="slide">7</div>
+    <div class="slide">8</div>
+    <div class="slide">9</div>
+</div>
+
+<script>
+    let currentFocus;
+
+    $(document).ready(function () {
+
+        $('.slider').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }
+            ]
+        });
+
+        $('.slide').on('click', function () {
+            $(this).toggleClass('locked');
+            $('.slide').not(this).removeClass('locked')
+            currentFocus = $(this);
+        });
+
+        $('.slick-next').on('click', function () {
+            let next = $(currentFocus).next()
+            if (next.length > 0) {
+                $('.slide').removeClass('locked')
+                next.toggleClass('locked')
+                currentFocus = next
+            }
+
+        });
+
+        $('.slick-prev').on('click', function () {
+            let prev = $(currentFocus).prev()
+            if (prev.length > 0) {
+                $('.slide').removeClass('locked')
+                prev.toggleClass('locked')
+                currentFocus = prev
+            }
+        });
+    });
+</script>
+</body>
+</html>

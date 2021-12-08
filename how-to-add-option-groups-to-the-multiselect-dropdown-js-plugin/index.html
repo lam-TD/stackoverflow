@@ -13,6 +13,13 @@
     select {
         width: 100%;
     }
+    .label-group span {
+        font-weight: bold;
+    }
+
+    .label-group label {
+        padding-left: 15px;
+    }
 </style>
 
 <body>
@@ -20,6 +27,26 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+<select id="select-test" class="w-full mt-8 no-border">
+    <optgroup label="Tenants">
+        <option value="Create Proposal">Create Proposal</option>
+        <option value="Retrieve Customer Data">Retrieve Customer Data</option>
+        <option value="Edit Dependant Data">Edit Dependant Data</option>
+    </optgroup>
+    <optgroup label="User">
+        <option value="User 1">User 1</option>
+        <option value="User 2">User 2</option>
+        <option value="User 3">User 3</option>
+    </optgroup>
+
+    <option value="No label">No label</option>
+</select>
+<br>
+
+<div id="content"></div>
+
+
+<hr>
 <select id="mySelect" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="3" class="w-full mt-8 no-border">
 <optgroup label="Tenants">
     <option value="Create Proposal">Create Proposal</option>
@@ -31,6 +58,9 @@
     <option value="User 2">User 2</option>
     <option value="User 3">User 3</option>
 </optgroup>
+
+<option value="No 1">No 1</option>
+<option value="No 2">No 2</option>
 </select>
 
 <script>
@@ -192,35 +222,43 @@
                 }
 
                 // my idea is here start
-                let labelGroup = $(el).find('optgroup')
-                $.each(labelGroup, function (index, groupOption) {
-                    // create label
-                    let label = $(`<div class="label-group">${$(groupOption).attr('label')}</div>`)
+                $.each($(el).children(), function (index, value) {
+                    if ($(value).is('optgroup')) {
+                        let label = $(`<div class="label-group"><span>${$(value).attr('label')}</span></div>`)
 
-                    $.each(groupOption.children, function (index, option) {
-                        let child = $(`<div><label><input class="item" data-option="${$(option).val()}" type="checkbox"> ${$(option).text()}</label></div>`)
-
-                        child.on('click', 'label', function () {
-                            let input = $(this).find('input')
-                            let optionValue = input.data('option')
-                            let isChecked = input.prop('checked')
-
-                            if (isChecked && dataChecked.indexOf(optionValue) === -1) {
-                                dataChecked.push(optionValue)
-                            } else if (!isChecked && dataChecked.indexOf(optionValue) !== -1) {
-                                dataChecked.splice(dataChecked.indexOf(optionValue), 1);
-                            }
-                            // Check all checkboxes are checked or not?
-                            $('.multiselect-dropdown-all-selector').find('input').prop('checked', !$('input.item:checkbox:not(:checked)').length > 0)
-
-                            $('#mySelect').val(dataChecked)
-                        });
-                        $(label).append(child)
-                    })
-
-                    $(list).append(label)
+                        $.each(value.children, function (idx, option) {
+                            $(label).append(createOption(option))
+                        })
+                        $(list).append(label)
+                    } else {
+                        let child = createOption(value)
+                        $(list).append(child)
+                    }
                 })
-                // my idea is here end
+
+                if (options) {
+
+                }
+
+                function createOption(element) {
+                    let option = $(`<div><label><input class="item" data-option="${$(element).val()}" type="checkbox"> ${$(element).text()}</label></div>`)
+                    option.on('click', 'label', function () {
+                        let input = $(this).find('input')
+                        let optionValue = input.data('option')
+                        let isChecked = input.prop('checked')
+
+                        if (isChecked && dataChecked.indexOf(optionValue) === -1) {
+                            dataChecked.push(optionValue)
+                        } else if (!isChecked && dataChecked.indexOf(optionValue) !== -1) {
+                            dataChecked.splice(dataChecked.indexOf(optionValue), 1);
+                        }
+                        // Check all checkboxes are checked or not?
+                        $('.multiselect-dropdown-all-selector').find('input').prop('checked', !$('input.item:checkbox:not(:checked)').length > 0)
+
+                        $('#mySelect').val(dataChecked)
+                    });
+                    return option
+                }
 
                 div.listEl = listWrap;
                 div.refresh = () => {
