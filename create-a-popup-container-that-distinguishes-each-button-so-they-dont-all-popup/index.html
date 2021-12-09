@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<style>
+    @media(max-width:1150px) {
+        .popup-container{
+            top: 25% !important;
+            width: 90% !important;
+            height: 50%;
+            padding: 2rem !important;
+        }
+
+    }
+    .page-id-474 main#content{
+        margin: 0px !important
+    }
+    .popup-trigger {
+        width: 170px;
+        right: 2rem;
+        margin: 3em auto;
+        text-align: center;
+        color: #FFF;
+        font-size: 18px;
+        padding:1rem 2rem;
+        text-decoration:none;
+        transition:300ms all;
+    }
+
+    .popup-trigger:hover {
+        opacity:.8;
+    }
+    .popup1 {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        width: 100%;
+        background-color: rgba(56, 56, 55, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        transition:500ms all;
+
+    }
+
+    .popup1.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transition:1s all;
+    }
+    .popup {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        width: 100%;
+        background-color: rgba(56, 56, 55, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        transition:500ms all;
+
+    }
+
+    .popup.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transition:1s all;
+    }
+
+    .popup-container {
+        transform:translateY(-50%);
+        transition:500ms all;
+        position: relative;
+        width: 60%;
+        margin: 2em auto;
+        top: 5%;
+        padding:5rem;
+        background: #FFF;
+        border-radius: .25em .25em .4em .4em;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .is-visible .popup-container {
+        transform:translateY(0);
+        transition:500ms all;
+    }
+
+    .popup-container .popup-close {
+        position: absolute;
+        top: 8px;
+        font-size:0;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .popup-container .popup-close::before,
+    .popup-container .popup-close::after {
+        content: '';
+        position: absolute;
+        top: 12px;
+        width: 14px;
+        height: 3px;
+        background-color: #8f9cb5;
+    }
+
+    .popup-container .popup-close::before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        left: 8px;
+    }
+
+    .popup-container .popup-close::after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        right: 8px;
+    }
+
+
+    .popup-container .popup-close:hover:before,
+    .popup-container .popup-close:hover:after {
+        background-color:#35a785;
+        transition:300ms all;
+    }
+    /*==========================================================================
+        Site grid
+    ==========================================================================	*/
+
+    .grid-this {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        padding: 30px;
+    }
+    .grid-this.with-spacing {
+        gap: 30px;
+    }
+    .grid-this .block img {
+        width: 100%;
+        height: auto;
+        vertical-align: top;
+    }
+
+    /* Grid spacing in slick slider */
+
+    .grid-this.with-spacing .slick-slide {
+        margin-right: 30px;
+    }
+    .grid-this.with-spacing .slick-list {
+        margin-right: -30px;
+    }
+
+    @media(max-width:1150px) {
+        .grid-this.with-spacing .slick-slide {
+            margin-right: 0;
+        }
+        .grid-this.with-spacing .slick-list {
+            margin-right: 0;
+        }
+        .page-id-324	.site-container{
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+        }
+    }
+
+
+
+    /* -------------------------------------------------------------
+    /
+    / Main Cat Container
+    /
+    / -------------------------------------------------------------*/
+    .main-cat-container{
+        Padding: 0px;
+        background-color: #fff;
+        border-style: solid;
+        border-width: 3px;
+        border-color:#e9ecf2;
+        transition:all 1s ease !important;
+    }
+
+    .main-cat-container:hover{
+        box-shadow: 0px 10px 13px -4px rgba(0,0,0,0.3);
+        -webkit-box-shadow: 0px 10px 13px -4px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 10px 13px -4px rgba(0,0,0,0.3);
+        transition:all 1s ease !important;
+    }
+
+    .main-cat-title{
+        padding-top: 12px;
+        font-size:22px;
+        color:#38507b;
+        text-align: center;
+    }
+    .main-cat-container:hover i{
+        color:#0e1932;
+    }
+    .mc-icons{
+        text-align: center;
+    }
+    .mc-icons i{
+        font-size:45px;
+    }
+    .choice-p{
+        color:#343a40;
+        font-size:22px;
+        font-weight: bold;
+    }
+    .custom-hr-spacing{
+        margin-top: 45px !important;
+        margin-bottom: 45px !important;
+    }
+    .faux-btn-container{
+        text-align: center !important;
+        margin-top: 20px !important;
+    }
+
+    .faux-btn{
+
+        background-color:#4cb150;
+        padding: 15px 35px;
+        color: #FFF;
+        transition:all 1s ease !important;
+        border-radius: 8px;
+    }
+    .faux-btn:hover{
+        background-color:#59cf5d;
+        transition:all 1s ease !important;
+    }
+
+
+</style>
+<body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" type="text/javascript"></script>
+
+<div class="grid-this with-spacing margins-fix">
+    <div>
+        <a href="#0" id="project01" class="info popup-trigger" title="info">
+
+            <div style="padding-bottom: 50px;" class="main-cat-container">
+                <div class="mc-icons" data-aos="flip-left" data-aos-delay="50" aos-duration="500"><img
+                        src="https://gilbert.level10designdev.com/wp-content/uploads/2021/12/Gilbert-Design-Build-Before-After-Kitchen-Remodel-Bradenton-Florida.jpg"
+                        width=100% height=auto></div>
+                <h3 class="main-cat-title">vEITH</h3>
+
+                <div class="faux-btn-container"><span class="faux-btn">See Project</span></div>
+            </div>
+        </a>
+
+        <div class="popup" role="alert">
+            <div class="popup-container">
+                <a href="#0" class="popup-close img-replace">Close</a>
+                [project01]
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <a href="#0" id="project02" class="info popup-trigger" title="info">
+        <div style="padding-bottom: 50px;" class="main-cat-container">
+            <div class="mc-icons" data-aos="flip-left" data-aos-delay="50" aos-duration="500"><img
+                    src="https://gilbert.level10designdev.com/wp-content/uploads/2021/12/Gilbert-Design-Build-Before-After-Kitchen-Remodel-Bradenton-Florida.jpg"
+                    width=100% height=auto></div>
+            <h3 class="main-cat-title">vEITH</h3>
+
+            <div class="faux-btn-container"><span class="faux-btn">See Project</span></div>
+        </div>
+    </a>
+        <div class="popup" role="alert">
+            <div class="popup-container">
+                <a href="#0" class="popup-close img-replace">Close</a>
+                [project02]
+            </div>
+        </div>
+    </div>
+
+    <div>.</div>
+
+</div>
+
+
+<script>
+    jQuery(document).ready(function( $ ){
+        jQuery(document).ready(function($){
+
+        })
+    })
+    $(document).ready(function(){
+        //open popup
+        $('.popup-trigger').on('click', function(event){
+            event.preventDefault();
+            $(this).parent().find('.popup').addClass('is-visible');
+        });
+
+        //close popup
+        $('.popup').on('click', function(event){
+            if( $(event.target).is('.popup-close') || $(event.target).is('.popup') ) {
+                event.preventDefault();
+                $(this).removeClass('is-visible');
+            }
+        });
+
+        //close popup when clicking the esc keyboard button
+        $(document).keyup(function(event){
+            if(event.which=='27'){
+                $('.popup').removeClass('is-visible');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
