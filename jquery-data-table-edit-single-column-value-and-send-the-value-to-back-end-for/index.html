@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+
+<button id="btn-save">save</button>
+<table id="example" class="display"></table>
+
+
+<script>
+    var dataSet = [
+        ["1", "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800"],
+        ["2", "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
+    ];
+
+    function prepareEditableOrder(data, type, row, meta) {
+        return '<input class="form-control cell-datatable" id="' + row.Id + '" type="text"  value = ' + data + ' >';
+    }
+
+    $(document).ready(function () {
+        $('#example').DataTable({
+            data: dataSet,
+            columns: [
+                {title: "Id",},
+                {title: "Name", render: prepareEditableOrder},
+                {title: "Position"},
+                {title: "Office"},
+                {title: "Extn."},
+                {title: "Start date"},
+                {title: "Salary"}
+            ]
+        });
+
+        $('#example').on('click', 'td', function () {
+            // how to add new value to cell and store it in data table so I can send it to back end
+            var table = $(this).closest('table').DataTable();
+            // table.cell(this).data("new"); // this is static value , I need value entered by user
+        });
+    });
+
+    $('#btn-save').click(function () {
+        let data = [];
+        $.each($('input.cell-datatable'), function (index, value) {
+            data.push($(value).val())
+        })
+        alert('Data to save: ' + data)
+        saveDatatoBackEnd(data)
+    })
+
+    function saveDatatoBackEnd(data) {
+        //Need to send change data to server side.....
+    }
+</script>
+
+
+</body>
+</html>
