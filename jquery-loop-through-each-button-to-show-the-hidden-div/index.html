@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .centerThis {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .center2 {
+        text-align: center;
+        background-color: red;
+    }
+
+    .container {
+        padding-top: 50px;
+        display: flex;
+        /* establish flex container */
+        flex-wrap: wrap;
+        /* enable flex items to wrap */
+        justify-content: space-around;
+    }
+
+    .button {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .buttonTwo {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .buttonThree {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .buttonFour {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .buttonFive {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .buttonSix {
+        background: red;
+        color: white;
+        padding: 10px;
+    }
+
+    .white {
+        color: white;
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    .hiddenOne {
+        height: 300px;
+        padding-top: 20px;
+        background-color: red;
+        color: white;
+    }
+
+    .hiddenTwo {
+        height: 300px;
+        background-color: red;
+        color: white;
+    }
+
+    .hiddenThree {
+        height: 300px;
+        background-color: red;
+        color: white;
+    }
+
+    .hiddenFour {
+        height: 300px;
+        background-color: red;
+        color: white;
+    }
+
+    .hiddenFive {
+        height: 300px;
+        background-color: red;
+        color: white;
+    }
+
+    .hiddenSix {
+        height: 300px;
+        background-color: red;
+        color: white;
+    }
+
+    .itemWithin {
+        flex: 0 35%;
+        height: 300px;
+        margin-bottom: 2%;
+        background-color: grey;
+    }
+
+    .itemWithin2 {
+        flex: 0 35%;
+        height: 300px;
+        background-color: grey;
+        margin-bottom: 2%;
+    }
+
+    .itemWithin3 {
+        flex: 0 35%;
+        height: 300px;
+        background-color: grey;
+        margin-bottom: 2%;
+    }
+
+    .itemWithin4 {
+        flex: 0 35%;
+        height: 300px;
+        background-color: grey;
+        margin-bottom: 2%;
+    }
+
+    .itemWithin5 {
+        flex: 0 35%;
+        height: 300px;
+        background-color: grey;
+        margin-bottom: 2%;
+    }
+
+    .itemWithin6 {
+        flex: 0 35%;
+        height: 300px;
+        background-color: grey;
+        margin-bottom: 2%;
+    }
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="container">
+    <div class="itemWithin">
+        <div class="hiddenOne">
+            <h2 class="center2">Mining & Resources</h2>
+            <p class="white">
+                Here are the details when view more is hovered
+            </p>
+        </div>
+
+        <h2 class="centerThis">Mining & Resources</h2>
+        <button class="button">View More</button>
+    </div>
+
+    <div class="itemWithin">
+        <div class="hiddenOne">
+            <h2 class="center2">Mining & Resources</h2>
+            <p class="white">
+                Here are the details when view more is hovered
+            </p>
+        </div>
+
+        <h2 class="centerThis">Mining & Resources</h2>
+        <button class="button">View More</button>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function() {
+        $(".hiddenOne").hide();
+
+        $(".button").hover(function () {
+            $(this).parent().find('.hiddenOne').fadeIn();
+        })
+
+        $(".hiddenOne").mouseleave(function () {
+            $(this).fadeOut();
+        })
+    });
+</script>
+
+</body>
+</html>
