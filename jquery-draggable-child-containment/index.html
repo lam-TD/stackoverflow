@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<style>
+    .project-image {
+        height: 500px;
+        width: 1280px;
+        overflow: hidden;
+        border: 2px solid #000;
+    }
+    img {
+        width: 100%;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<div class="project-image">
+    <img class="draggable" src="https://lh3.googleusercontent.com/d/1nVpMNqvY4hREvMngi0cfr5u2fZmovPbe">
+</div>
+
+
+<script>
+    // https://stackoverflow.com/questions/41122982/dont-drag-over-window-edges
+    var index1 = 10;
+    let draggableHeight = $('.draggable').height();
+    let parentHeight = $('.project-image').height();
+
+    $('.draggable').draggable({
+        containment: [0, index1, $('body').width()/4, 200]
+    });
+
+    // update option containment after a window resize
+    $(window).resize(function() {
+        $( "#test" ).draggable( "option", "containment", "parent" );
+    });
+</script>
+
+
+</body>
+</html>
