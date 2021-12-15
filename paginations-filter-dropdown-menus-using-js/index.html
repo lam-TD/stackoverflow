@@ -151,7 +151,6 @@
             const next = $('<li class="page-item btn-next"><span class="page-link">Next</span></li>')
             $(next).click(function () {
                 if (!$(this).is('.disabled')) {
-                    console.log(currentPage, Math.ceil(pageCount))
                     if (currentPage < Math.ceil(pageCount)) {
                         showPage(currentPage + 1)
                     }
