@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="owl.carousel.min.css">
+<!--    <link rel="stylesheet" href="owl.theme.default.min.css">-->
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/669264/owl.carousel.css">
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/669264/owl.theme.css">
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/669264/owl.transitions.css">
+</head>
+<body>
+<style>
+    .item {
+        height: 100px;
+        margin: 5px;
+    }
+
+    .owl-item:nth-of-type(odd) {
+        background-color: red;
+    }
+
+    .owl-item:nth-of-type(even) {
+        background-color: blue;
+    }
+</style>
+<div class="owl-carousel owl-theme">
+    <div class="item"><h4>1</h4></div>
+    <div class="item"><h4>2</h4></div>
+    <div class="item"><h4>3</h4></div>
+    <div class="item"><h4>4</h4></div>
+    <div class="item"><h4>5</h4></div>
+    <div class="item"><h4>6</h4></div>
+    <div class="item"><h4>7</h4></div>
+</div>
+
+<button id="insert" class="btn btn-default">Insert</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/669264/owl.carousel.js"></script>
+
+
+<script>
+    const itemPerPage = 3
+    let counter = 7;
+    let currentItem2 = 1;
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel({
+            items: itemPerPage,
+            loop: false,
+            itemsDesktop : [1190,4],
+            itemsDesktopSmall : [990,3],
+            itemsTablet: [900,3],
+            itemsTabletSmall : [640, 2],
+            itemsMobile : [360, 1],
+            navigation: true,
+            pagination: false,
+        });
+
+        setInterval(function () {
+            var owl = $(".owl-carousel").data('owlCarousel');
+            var owlItemsAmount = owl.itemsAmount + 1;
+            var currentIndex = owl.currentItem
+
+            owl.addItem("<div class='item'><h4>"+ owlItemsAmount +"</h4></div>", owlItemsAmount);
+            if (currentItem2 === 0) {
+                currentItem2 = 1;
+                owl.goTo(currentItem2)
+            } else {
+                owl.goTo(currentItem2)
+                currentItem2++
+            }
+
+        }, 2000)
+    });
+
+    function moved() {
+        var owl = $(".owl-carousel").data('owlCarousel');
+        var owlItemsAmount = owl.itemsAmount + 1;
+        // owl.addItem("<div class='item'><h4>"+ owlItemsAmount +"</h4></div>", owlItemsAmount);
+
+        // var item = owl.currentItem+1;
+        // var owlCurrentItem = item + 5;
+        // var owlItemsAmount = owl.itemsAmount;
+        // console.log(owl.currentItem)
+        // if (owlCurrentItem - 2 === owl.itemsAmount) {
+        //     console.log('add new owl item')
+        //     console.log(owlCurrentItem)
+        //     // owl.goTo(owl.currentItem + 1, 500)
+        // }
+
+    }
+
+    function getNextProduct(){
+        var owl = $(".owl-carousel").data('owlCarousel');
+        owl.addItem(result,owl.itemsAmount);
+        owl.addItem("<div>a</div>",owl.itemsAmount);
+    }
+</script>
+</body>
+</html>
