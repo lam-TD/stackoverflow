@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Standard Template</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap icon Font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+    <!-- CSS IMPORTE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+
+    <!-- Benutzerdeffinierte CSS -->
+    <style>
+        #responsive-check {
+            display: none;
+            content: "0"
+        }
+        .top-nav {
+            display: none
+        }
+        nav#main-nav {
+            height: 55px;
+            background: #ededed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 15px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+            border-bottom: 2px solid #fff;
+            position: fixed;
+            z-index: 99999;
+            width: 100%;
+            top: 0
+        }
+
+        nav#main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav#main-nav .logo img {
+            max-height: 35px;
+            width: auto;
+            margin-top: 10px
+        }
+
+        nav#main-nav .resp-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center
+        }
+
+        nav#main-nav .resp-nav .btn {
+            background-color: #fff;
+            display: block;
+            margin: 5px 8px 0 !important;
+            padding: 4px 10px;
+            border: transparent
+        }
+
+        nav#main-nav .resp-nav .btn i {
+            color: #EF7300;
+            font-size: 20px;
+            color: #894200;
+            transition: color, .5s ease-in-out
+        }
+
+        nav#main-nav .resp-nav .btn:hover i {
+            color: #ffa756
+        }
+        .nav-items {
+            display: none
+        }
+        .menu-links {
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+        .menu-links li {
+            padding: 10px 5px;
+            transition: all, .5s;
+            border-bottom: #ccc 1px solid
+        }
+        .menu-links li a {
+            display: block;
+            text-decoration: none;
+            font-family: roboto;
+            font-size: 15px;
+            color: #222;
+            flex-grow: 2
+        }
+
+        .menu-links li ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 10px;
+            display: none
+        }
+
+        .menu-links li ul li {
+            border-bottom: 0;
+            color: #333
+        }
+
+        .menu-links li ul li:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 1px;
+            background-color: #ccc;
+            width: 0;
+            transition: width, .5s
+        }
+
+        .menu-links li ul li:hover:after {
+            width: 100px
+        }
+
+        .menu-links li.has-subs div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between
+        }
+
+        .menu-links li.has-subs div div.subs {
+            background-color: #EF7300;
+            margin: -10px -5px -10px 0;
+            padding-top: 10px;
+            transition: background-color, .5s;
+            cursor: pointer
+        }
+
+        .menu-links li.has-subs div div.subs i {
+            color: #fff;
+            margin: 8px
+        }
+
+        .menu-links li.has-subs div div.subs:hover {
+            background-color: #ffa756
+        }
+
+        .menu-links li:hover, .menu-links li.has-subs:hover {
+            background-color: #fff;
+            padding-left: 10px
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 15px;
+            align-items: center
+        }
+
+        form input.search-field {
+            width: 100%;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            padding: 5px;
+            border: 0;
+            padding: 5px 15px
+        }
+
+        form input.search-field:active, form input.search-field:focus-visible, form input.search-field:focus {
+            border-color: transparent !important;
+            border: 0
+        }
+
+        form button.search-submit {
+            background-color: #fff;
+            border: 0;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            padding: 6px 10px 5px
+        }
+
+        form button.search-submit i {
+            background-color: #EF7300;
+            border-radius: 40px;
+            padding: 3px 7px;
+            color: #fff;
+            transition: background-color, .5s
+        }
+
+        form button.search-submit i:hover {
+            background-color: #894200
+        }
+
+        #mobMenu .modal-body {
+            background-color: #ddd
+        }
+
+        @media (min-width: 576px) {
+            #responsive-check {
+                display: none;
+                content: "576"
+            }
+        }
+
+        @media (min-width: 768px) {
+            #responsive-check {
+                display: none;
+                content: "768"
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="modal hide fade mt-4" id="mobMenu" data-bs-backdrop="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-body pt-5">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Obere Navigation-->
+<nav class="top-nav">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between">
+            <div class="top-phone">
+                <i class="bi bi-telephone-fill"></i> 040 / 225 689 788 <span class="spacer"></span><i
+                    class="bi bi-envelope-fill"></i> <a href="#">info@test.de</a>
+            </div>
+            <div class="top-links">
+                <a href="#">Impressum</a> <span class="spacer"></span> <a href="#">Datenschutzverordnung</a> <span
+                    class="spacer"></span> <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Hauptnavigation-->
+<nav id="main-nav">
+    <a href="#" class="logo"><img src="img/logo.png"></a>
+    <div class="resp-nav">
+        <buttton class="btn btn-primary" id="bars"><i class="bi bi-list mob-menu"></i></buttton>
+        <buttton class="btn btn-secondary" class="cart"><i class="bi bi-cart-fill"></i></buttton>
+    </div>
+</nav>
+<div class="nav-items">
+    <form>
+        <input type="input" placeholder="Suchbegriff" class="search-field">
+        <button type="submit" class="search-submit"><i class="bi bi-search"></i></button>
+    </form>
+    <ul class="menu-links">
+        <li><a href="#">Nur Link</a></li>
+        <li class="has-subs"><a href="#">Nur untermenu Test</a>
+            <ul>
+                <li><a href='#'>Das ist ein Linktitel</a></li>
+                <li><a href='#'>Das ist ein Linktitel</a></li>
+                <li><a href='#'>Das ist ein Linktitel</a></li>
+                <li><a href='#'>Das ist ein Linktitel</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Links zu lang</a></li>
+        <li><a href="#">Links mit Favs</a></li>
+        <li><a href="#">Links mit CTA</a></li>
+        <li><a href="#">Links mit Bild</a></li>
+        <li><a href="#">Alles</a></li>
+    </ul>
+</div>
+
+
+<div id="responsive-check"></div>
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function checkSize() {
+        let size = parseInt($('#responsive-check').css('content').replace('"', ''));
+        gSize = size;
+        $(window).on('resize', function (e) {
+            let size = parseInt($('#responsive-check').css('content').replace('"', ''));
+            gSize = size;
+        });
+    }
+
+    function modalEvents() {
+        let modalOpen
+        let $tgt = $('#bars').children('i');
+        $('#mobMenu').on('show.bs.modal', function (e) {
+            $tgt.removeClass('bi-list');
+            $tgt.addClass('bi-x');
+        });
+        $('#mobMenu').on('hidden.bs.modal', function (e) {
+            $tgt.removeClass('bi-x');
+            $tgt.addClass('bi-list');
+        });
+    }
+
+    var navM = {
+        settings: {
+            $tgt: $('#main-nav')
+        },
+        g: {
+            $trigMenu: $('#bars'),
+            $data: $('.nav-items'),
+            $modal: $('#mobMenu')
+        },
+        init: function (options) {
+            jQuery.extend(navM.settings, options);
+            navM.openMobile();
+            modalEvents();
+            navM.collapsedMenu();
+
+        },
+        openMobile: function () {
+            let $tgtI = navM.g.$trigMenu.children("i");
+            navM.g.$trigMenu.on('click', function () {
+                if ($tgtI.hasClass('bi-list')) {
+                    dynModal.init("open", navM.g.$data);
+                } else {
+                    dynModal.init("close", '');
+                }
+            })
+        },
+        collapsedMenu: function () {
+            navM.g.$data.find('.menu-links li').each(function (i) {
+                let $t = $(this);
+                var $button = $('<div></div>').addClass('subs').html('<i class="bi bi-caret-down-fill"></i>');
+
+                if ($t.children('ul').length > 0) {
+                    $t.wrapInner('<div></div>').append('');
+                    $button.clone(true).appendTo($t.find('div'));
+
+                    $t.children('div').on("click",$button, function(){
+                        console.log('make me happy!!!!!!');
+                    });
+                }
+            })
+        }
+    }
+
+    var dynModal = {
+        init: function (op, data) {
+            let $tgt = $('#mobMenu');
+            let $tgtCnt = $tgt.find('.modal-body');
+            if (op == "open") {
+                $tgtCnt.html(data.children());
+                $tgt.modal('show');
+            } else {
+                $tgtCnt.html('');
+                $tgt.modal('hide');
+            }
+        }
+    }
+    navM.init()
+</script>
+
+<!-- Zusätzliche Bibliotheken -->
+
+<!-- JSON-->
+
+<!-- Benutzerdeffiniertes JS -->
+
+</body>
+</html>
