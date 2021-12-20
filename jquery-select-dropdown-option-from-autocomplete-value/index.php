@@ -10,36 +10,36 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script>
         $(function () {
-            const availableTags = [
-                {
-                    label: 'label1',
-                    value1: 'label1',
-                    value2: 'Option1',
-                },
-                {
-                    label: 'label2',
-                    value1: 'label2',
-                    value2: 'Option2',
-                },
-                {
-                    label: 'label3',
-                    value1: 'label3',
-                    value2: 'Option3',
-                },
+            <?php
+            $php_array = [
+                [
+                   "label" => 'label1',
+                   "value1" => 'label1',
+                   "value2" => 'Option1',
+                ],
+                [
+                    "label" => 'label2',
+                    "value1" => 'label2',
+                    "value2" => 'Option2',
+                ],
+                [
+                    "label" => 'label3',
+                    "value1" => 'label3',
+                    "value2" => 'Option3',
+                ],
             ];
-
+            $js_array = json_encode($php_array);
+            echo "const availableTags = ". $js_array . ";\n";
+            ?>
             $("#id_post").autocomplete({
                 source: availableTags,
                 select: function (event, ui) {
-                    console.log(ui.item)
                     $('#textbox1').val(ui.item.value);
                     $('#textbox2').val(ui.item.value2);
                     $('#select1').val(ui.item.value2);
                 }
             });
         });
-
-
     </script>
 </head>
 <body>
@@ -64,13 +64,11 @@
         <td>PSA Lama</td>
         <td>:</td>
         <td>
-
             <select name="select1" id="select1">
                 <option value="">-</option>
                 <option value="Option1">Option1</option>
                 <option value="Option2">Option2</option>
                 <option value="Option3">Option3</option>
-
             </select>
         </td>
     </tr>
