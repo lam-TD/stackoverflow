@@ -56,27 +56,27 @@
 
 <script>
     $(document).ready(function () {
-        $('#example2').Tabledit({
-            editButton: true,
-            removeButton: false,
-            columns: {
-                identifier: [0, 'id'],
-                editable: getData()
-            }
-        });
-
-        async function getData() {
-            const selectData = getSelectData()
-            selectData.done(function(res) {
-                return [[1, 'First Name'],[2, 'Last Name'],[3, 'Username', res]]
-            })
+        function initTableEdit() {
+            $.post('select-data.php')
+                .done(function (res) {
+                    let data = [[1, 'First Name'], [2, 'Last Name'], [3, 'Username', JSON.stringify(res)]]
+                    creatTableEdit(data)
+                })
         }
 
-        function getSelectData() {
-            return $.post('select-data.php')
+        function creatTableEdit(data) {
+            $('#example2').Tabledit({
+                editButton: true,
+                removeButton: false,
+                columns: {
+                    identifier: [0, 'id'],
+                    editable: data
+                }
+            });
         }
 
-        getSelectData()
+        initTableEdit()
+
     })
 </script>
 
