@@ -23,96 +23,53 @@
         color: #ffffff;
         font-size: 16px;
     }
+
+    svg#customShape {
+        width:100px;
+        height:100px;
+    }
+
+    svg#customShape > path {
+        stroke:transparent;
+        stroke-width:0;
+    }
 </style>
 
-<svg id="cusotmShape" version="1.1" style="width:100px;height:100px;" stroke="off" set-as-background="no" class="custom-shape cs-shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 135.8 130.8" xml:space="preserve">
-    <clipPath id="rp-shape-02">
-        <path rp-cp-id="rp-shape-02" class="cs-element-layer" fill="#000000" style="stroke:transparent;stroke-width:0px;" d="M100.4,128.4l-26.8-13.5c-2.9-1.5-6.4-1.4-9.3,0.2l-26.2,14.4c-7.3,4-15.9-2.1-14.7-10.3l4.5-29.6 c0.5-3.2-0.6-6.5-3-8.8L3.1,60.3c-6-5.7-2.9-15.8,5.2-17.1l29.6-4.8c3.2-0.5,6-2.6,7.4-5.6L58.1,5.7C61.6-1.8,72.2-2,76,5.4L89.7,32 c1.5,2.9,4.4,4.9,7.6,5.3l29.7,3.8c8.2,1,11.7,11,5.8,16.9l-20.9,21.3c-2.3,2.3-3.3,5.7-2.7,8.9l5.6,29.5 C116.3,125.7,107.8,132.1,100.4,128.4z"></path>
-    </clipPath>
-    <image clip-path="url(#rp-shape-02)" xlink:href="https://www.vzhurudolu.cz/assets/codepen/kubik_ig.jpg" src="https://www.vzhurudolu.cz/assets/codepen/kubik_ig.jpg" alt="Image" height="100" width="100" class="svg__image">
+<svg xmlns="http://www.w3.org/2000/svg" id="customShape" stroke="off"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     x="0px" y="0px" viewBox="0 0 135.8 130.8" xml:space="preserve">
+
+<path class="cs-element-layer" fill="#000000"
+      d="M100.4,128.4l-26.8-13.5c-2.9-1.5-6.4-1.4-9.3,0.2l-26.2,14.4c-7.3,4-15.9-2.1-14.7-10.3l4.5-29.6 c0.5-3.2-0.6-6.5-3-8.8L3.1,60.3c-6-5.7-2.9-15.8,5.2-17.1l29.6-4.8c3.2-0.5,6-2.6,7.4-5.6L58.1,5.7C61.6-1.8,72.2-2,76,5.4L89.7,32 c1.5,2.9,4.4,4.9,7.6,5.3l29.7,3.8c8.2,1,11.7,11,5.8,16.9l-20.9,21.3c-2.3,2.3-3.3,5.7-2.7,8.9l5.6,29.5 C116.3,125.7,107.8,132.1,100.4,128.4z">
+
+</path>
 </svg>
-
-<div id="svgHolder" class="container" style="height: 100px">
-
-</div>
 
 <div>
     <button type="button" id="insertImage">Insert Image</button>
 </div>
 
-
 <script>
-    // http://jsfiddle.net/Yansky/UVFBj/5/
-    // https://stackoverflow.com/questions/70458908/jquery-append-element-as-case-sensitive-and-non-standard-html-elements
-    function createSvg(qualifiedName = 'svg') {
-        return document.createElementNS('http://www.w3.org/2000/svg', qualifiedName)
-    }
+    const _svgNS = 'http://www.w3.org/2000/svg';
+    const customShape = document.getElementById('customShape');
+
+    const svg = customShape.appendChild(document.createElementNS(_svgNS, 'image'));
+    svg.setAttribute('x', '0');
+    svg.setAttribute('y', '0');
+    svg.setAttribute('width', '100%');
+    svg.setAttribute('height', '100%');
+    svg.setAttribute('clip-path', 'url(#clippy)');
+    svg.setAttributeNS('http://www.w3.org/1999/xlink','href','https://www.vzhurudolu.cz/assets/codepen/kubik_ig.jpg');
+
+    // create clipPath
+    const clipPath = customShape.appendChild(document.createElementNS(_svgNS, 'clipPath'));
+    clipPath.id = 'clippy';
 
     $('#insertImage').click(function () {
-        // fieldShield();
-        // return
-        var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path'); //Create a path in SVG's namespace
-        newElement.style.stroke = "transparent"; //Set stroke colour
-        newElement.style.strokeWidth = "0px"; //Set stroke width
-        newElement.setAttribute('rp-cp-id', 'rp-shape-02')
-        newElement.setAttribute('fill', '#000000')
-        newElement.setAttribute("d","M100.4,128.4l-26.8-13.5c-2.9-1.5-6.4-1.4-9.3,0.2l-26.2,14.4c-7.3,4-15.9-2.1-14.7-10.3l4.5-29.6 c0.5-3.2-0.6-6.5-3-8.8L3.1,60.3c-6-5.7-2.9-15.8,5.2-17.1l29.6-4.8c3.2-0.5,6-2.6,7.4-5.6L58.1,5.7C61.6-1.8,72.2-2,76,5.4L89.7,32 c1.5,2.9,4.4,4.9,7.6,5.3l29.7,3.8c8.2,1,11.7,11,5.8,16.9l-20.9,21.3c-2.3,2.3-3.3,5.7-2.7,8.9l5.6,29.5 C116.3,125.7,107.8,132.1,100.4,128.4z"); //Set path's data
-        newElement.classList.add('cs-element-layer')
-
-        const clipPath = document.createElementNS( 'http://www.w3.org/2000/svg', 'clipPath')
-        clipPath.setAttribute('id', 'rp-shape-02')
-        clipPath.appendChild(newElement)
-
-        const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-        image.setAttribute('clip-path', 'url(rp-shape-02)')
-        image.setAttribute('xlink:href', 'https://www.vzhurudolu.cz/assets/codepen/kubik_ig.jpg')
-        image.setAttribute('src', 'https://www.vzhurudolu.cz/assets/codepen/kubik_ig.jpg')
-        image.style.height = '100px';
-        image.style.width = '100px';
-        image.classList.add('svg__image')
-
-        const svgContent = createSvg();
-        svgContent.style.width = '100px';
-        svgContent.style.height = '100px';
-        svgContent.classList.add('cs-shape')
-        svgContent.classList.add('custom-shape')
-        svgContent.setAttribute('x', '0px')
-        svgContent.setAttribute('y', '0px')
-        svgContent.setAttribute('viewBox', '0 0 135.8 130.8')
-        svgContent.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-        svgContent.setAttribute('xml:space', 'preserve')
-        svgContent.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
-
-        svgContent.appendChild(clipPath)
-        svgContent.appendChild(image)
-
-        const container = document.getElementById('svgHolder');
-        container.append(svgContent)
+        const path = clipPath.appendChild(document.createElementNS(_svgNS, 'path'));
+        path.setAttribute('d', 'M100.4,128.4l-26.8-13.5c-2.9-1.5-6.4-1.4-9.3,0.2l-26.2,14.4c-7.3,4-15.9-2.1-14.7-10.3l4.5-29.6 c0.5-3.2-0.6-6.5-3-8.8L3.1,60.3c-6-5.7-2.9-15.8,5.2-17.1l29.6-4.8c3.2-0.5,6-2.6,7.4-5.6L58.1,5.7C61.6-1.8,72.2-2,76,5.4L89.7,32 c1.5,2.9,4.4,4.9,7.6,5.3l29.7,3.8c8.2,1,11.7,11,5.8,16.9l-20.9,21.3c-2.3,2.3-3.3,5.7-2.7,8.9l5.6,29.5 C116.3,125.7,107.8,132.1,100.4,128.4z');
     })
-
-    var fieldShield = function() {
-        var paper = Raphael(document.getElementById("testP1"), 200, 200);
-        paper.image("http://i.imgur.com/LQIsf.jpg", 0,0, 100, 100);
-
-        var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-        svg.setAttributeNS('http://www.w3.org/2000/svg','xlink','http://www.w3.org/1999/xlink');
-        svg.setAttributeNS('http://www.w3.org/2000/svg','height','200');
-        svg.setAttributeNS('http://www.w3.org/2000/svg','width','200');
-        svg.setAttributeNS('http://www.w3.org/2000/svg','id','test2');
-
-        var svgimg = document.createElementNS('http://www.w3.org/2000/svg','image');
-        svgimg.setAttributeNS('http://www.w3.org/2000/svg','height','100');
-        svgimg.setAttributeNS('http://www.w3.org/2000/svg','width','100');
-        svgimg.setAttributeNS('http://www.w3.org/2000/svg','id','testimg2');
-        svgimg.setAttributeNS('http://www.w3.org/1999/xlink','href','http://i.imgur.com/LQIsf.jpg');
-        svgimg.setAttributeNS('http://www.w3.org/2000/svg','x','0');
-        svgimg.setAttributeNS('http://www.w3.org/2000/svg','y','0');
-
-        svg.appendChild(svgimg);
-        document.getElementById("svgHolder").append(svg);
-    }
 </script>
-
-
 </body>
 </html>
