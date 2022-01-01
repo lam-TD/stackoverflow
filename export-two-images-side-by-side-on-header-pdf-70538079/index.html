@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <script type="text/javascript" charset="utf8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
+
+
+    <style>
+
+    </style>
+</head>
+<body>
+<img id="img-data" src="https://images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg" alt="">
+<div class="container-fluid p-5">
+    <div class="row">
+        <table id="example" class="display nowrap">
+            <thead>
+            <tr>
+                <th class="text-center"><input type="checkbox" class="selectAll" name="selectAll" value="all"></th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td></td>
+                <td>Tiger Nixon</td>
+                <td>
+                    <div class="status-active" title="Active"></div>
+                </td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$3,120</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Garrett Winters</td>
+                <td>
+                    <div class="status-active" title="Active"></div>
+                </td>
+                <td>Edinburgh</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$5,300</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Donna Snider</td>
+                <td>
+                    <div class="status-inactive"></div>
+                </td>
+                <td>New York</td>
+                <td>27</td>
+                <td>2011/01/25</td>
+                <td>$3,120</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                callback(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+
+    function getDataUrl(img) {
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        // Set width and height
+        canvas.width = img.width;
+        canvas.height = img.height;
+        // Draw the image
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL('image/jpeg');
+    }
+    const imageBase64 = getDataUrl(document.getElementById('img-data'))
+    $(document).ready(function () {
+        toDataURL('https://images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg', function(dataUrl) {
+            $('#img-data').attr('src', dataUrl)
+        })
+        var DT1 = $('#example').DataTable({
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0,
+            }],
+            select: {
+                style: 'os',
+                selector: 'td:first-child'
+            },
+            order: [
+                [1, 'asc']
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        format: {
+                            body: function (data, rowIdx, colIndex, cellNode) {
+                                const statusColumn = $(cellNode).find('div')
+                                if (statusColumn.length > 0) {
+                                    data = statusColumn.is('.status-active') ? 'Active' : 'Inactive'
+                                }
+                                return data
+                            }
+                        }
+                    },
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        format: {
+                            body: function (data, rowIdx, colIndex, cellNode) {
+                                const statusColumn = $(cellNode).find('div')
+                                if (statusColumn.length > 0) {
+                                    data = statusColumn.is('.status-active') ? 'Active' : 'Inactive'
+                                }
+                                return data
+                            }
+                        }
+                    },
+                    customize: function (doc) {
+                        doc.pageMargins = [40, 80, 40, 60]
+                        const imageBase64 = $('#img-data').attr('src')
+                        doc.header = [
+                            {
+                                margin: 10,
+                                columns: [
+                                    {
+                                        image: imageBase64,
+                                        width: 100,
+                                        height: 40,
+                                        padding: 10
+                                    },
+                                    {
+                                        width: '*',
+                                        text: ''
+                                    },
+                                    {
+                                        image: imageBase64,
+                                        width: 100,
+                                        height: 40,
+                                    }
+                                ],
+                                columnGap: 10
+                            },
+                        ]
+
+                        doc.content[1].table.widths = ['auto','*','*','*','*','*','*'];
+                        return doc
+                    }
+                },
+            ],
+        });
+
+        $(".selectAll").on("click", function (e) {
+            if ($(this).is(":checked")) {
+                DT1.rows().select();
+            } else {
+                DT1.rows().deselect();
+            }
+        });
+    });
+</script>
+</body>
+</html>
