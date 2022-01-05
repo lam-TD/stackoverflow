@@ -1,0 +1,182 @@
+<!--https://stackoverflow.com/questions/70581135/accordion-revert-to-default-tab-text-when-active-tab-is-clicked-->
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Accordion Revert to Default Tab Text When Active Tab is Clicked</title>
+</head>
+<body>
+<style>
+    .accordion-item {
+        margin: 0 0 1rem;
+    }
+
+    .accordion-item .accordion-trigger {
+        color: #fff;
+        background: #37847c;
+        cursor: pointer;
+        padding: 15px;
+        position: relative;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .accordion-item .accordion-trigger span.teamTitlestyle {
+        font-size: 24px;
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+
+    .accordion-item .accordion-trigger:hover {
+        background: #333;
+    }
+
+    .accordion-item .accordion-trigger:hover::before {
+        color: #fff;
+    }
+
+    .accordion-item .accordion-trigger.accordion-open {
+        background: #ccc;
+    }
+
+    .accordion-item .accordion-trigger .staff {
+        float: right;
+        margin: 3px;
+    }
+
+    .accordion-item .accordion-trigger .staff::after {
+        font-family: 'Font Awesome 5 Free';
+        content: "\f067";
+        font-size: 20px;
+        color: #fff;
+        margin: 0 10px 0 10px;
+    }
+
+    .accordion-item .accordion-trigger.accordion-open .staff::after {
+        content: "\f068";
+        color: #fff;
+    }
+
+    .accordion-item .accordion-collapse {
+        color: #000;
+        display: none;
+        padding: 15px;
+        font-weight: 500;
+    }
+
+    .accordion-item .accordion-collapse .mainContent {
+        display: inline-block;
+        vertical-align: top;
+        width: 67%;
+    }
+
+    .accordion-item .accordion-collapse .accordionSidebar {
+        background: #f00;
+        text-align: center;
+        padding: 2rem;
+        display: inline-block;
+        width: 25%;
+    }
+
+    .accordion-item .accordion-collapse a {
+        color: #ccc;
+    }
+
+</style>
+<h1>Hello, world!</h1>
+
+<div class="container">
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-trigger">
+                <span class="teamTitlestyle">Team One</span>
+                <div class="staff"><span class="showHide">Show</span>
+                </div>
+            </div>
+            <div class="accordion-collapse">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Cras
+                semper auctor neque vitae tempus quam pellentesque nec nam.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-trigger">
+                <span class="teamTitlestyle">Team TWO</span>
+                <div class="staff"><span class="showHide">Show</span>
+                </div>
+            </div>
+            <div class="accordion-collapse">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Cras
+                semper auctor neque vitae tempus quam pellentesque nec nam.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-trigger">
+                <span class="teamTitlestyle">Team THREE</span>
+                <div class="staff"><span class="showHide">Show</span>
+                </div>
+            </div>
+            <div class="accordion-collapse">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Cras
+                semper auctor neque vitae tempus quam pellentesque nec nam.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript; choose one of the two! -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $.fn.accordion = function () {
+            const trigger = $(this).find('.accordion-trigger');
+            const collapse = $(this).find('.accordion-collapse');
+
+            // show first accordion element
+            $(trigger).first().addClass('accordion-open').find('span.showHide').html('HIDE');
+            $(collapse).first().show();
+
+            const accordionItem = $(this).children('.accordion-item')
+            // add event click on all accordion item
+            accordionItem.click(function () {
+                $(this).find('.accordion-collapse').slideToggle();
+                $(this).find('.accordion-trigger').toggleClass('accordion-open');
+
+                const accordionTrigger = $(this).find('.accordion-trigger')
+                const isOpened = accordionTrigger.hasClass('accordion-open')
+                accordionTrigger.find('.staff').html(isOpened ? 'Hide' : 'Show')
+
+                // hide another accordion item
+                const anotherAccordionItem = $(this).parent().find('.accordion-item').not($(this))
+                anotherAccordionItem.find('.accordion-trigger').removeClass('accordion-open')
+                anotherAccordionItem.find('.accordion-trigger').find('.staff').html('Show')
+                anotherAccordionItem.find('.accordion-collapse').slideUp()
+            })
+        }
+        $('.accordion').accordion();
+
+
+    });
+
+</script>
+</body>
+</html>
